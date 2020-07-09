@@ -3,7 +3,6 @@ package com.giit.demo.Modelo;
 import javax.persistence.*;
 
 import java.sql.Date;
-import javax.persistence.*;
 
 @Entity
 @Table (name="paciente")
