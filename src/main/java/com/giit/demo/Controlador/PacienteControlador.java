@@ -19,10 +19,10 @@ import com.giit.demo.Repositorio.PacienteRepositorio;
 @RestController
 @RequestMapping("/api/paciente")
 @CrossOrigin (origins = "*", methods = {RequestMethod.GET,RequestMethod.POST, RequestMethod.DELETE, RequestMethod.PUT})
-public class PacienteControlador {
+public class PacienteControlador {  
 	
 	@Autowired
-	PacienteRepositorio pacienteRepo;
+	PacienteRepositorio pacienteRepo; 
 	
 	@GetMapping
 	public Iterable<Paciente> getAll(){

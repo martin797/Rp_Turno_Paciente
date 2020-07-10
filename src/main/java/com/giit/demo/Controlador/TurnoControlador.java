@@ -37,7 +37,7 @@ public class TurnoControlador {
 	}
 
 	@PostMapping
-	public Turno insertar(@RequestBody Turno turno) {
+	public Turno insertar(@RequestBody Turno turno) { 
 		return turnoRepositorio.save(turno);
 	}
 	

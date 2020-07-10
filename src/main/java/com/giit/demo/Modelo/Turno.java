@@ -13,26 +13,26 @@ public class Turno {
 	@Column(name="turno_id")
 	private int id;
 	
-	@Column(name="IdMedico")
+	@Column(name="id_Medico")
 	private int id_medico;
 	
-	@Column(name="IdEspecialidad")
+	@Column(name="id_especialidad")
 	private int id_especialidad;
 	
-	@Column(name="CostoConslta")
+	@Column(name="costo_conslta")
 	private float costo_consulta;
 	
-	@Column(name="FechaTurno")
+	@Column(name="fecha_turno")
 	private Date fecha;
 	
-	@Column(name="Hora")
+	@Column(name="hora")	
 	private String hora;
 	
-	@Column(name="Confirmacion")
+	@Column(name="confirmacion")
 	private boolean confirmacion;
 
 	@ManyToOne
-	@JoinColumn(name = "IdPaciente")
+	@JoinColumn(name = "turn_paciente")
 	Paciente pacient; 
 	
 	public int getId() {
