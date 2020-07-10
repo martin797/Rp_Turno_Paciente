@@ -32,9 +32,6 @@ public class Paciente {
 	@Column(name="paciente_nacionalidad")
 	private String nacionalidad;
 	
-	@OneToMany(mappedBy = "pacient")
-	List<Turno> turnolist;
-	
 	public int getId() {
 		return id;
 	}

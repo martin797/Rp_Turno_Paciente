@@ -1,7 +1,11 @@
 package com.giit.demo.Controlador;
 
+import java.util.List;
+import java.util.Set;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.giit.demo.Modelo.Turno;
+import com.giit.demo.Repositorio.PacienteRepositorio;
 import com.giit.demo.Repositorio.TurnoRepositorio;
 
 @RestController
@@ -23,6 +28,8 @@ import com.giit.demo.Repositorio.TurnoRepositorio;
 public class TurnoControlador {
 	@Autowired
 	TurnoRepositorio turnoRepositorio;
+	@Autowired
+	PacienteRepositorio pacienteRepositorio;
 	
 	@GetMapping
 	public Iterable<Turno> getAll(){
@@ -38,7 +45,13 @@ public class TurnoControlador {
 
 	@PostMapping
 	public Turno insertar(@RequestBody Turno turno) { 
-		return turnoRepositorio.save(turno);
+		try {
+			turno.setPaciente(pacienteRepositorio.save(turno.getPaciente()));
+			return turnoRepositorio.save(turno);
+		} catch (Exception e) {
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Turno no Encontrado");
+		}
+		
 	}
 	
 	@PutMapping
@@ -52,4 +65,9 @@ public class TurnoControlador {
 			turnoRepositorio.delete(turnoRepositorio.findById(id).get());
 		}
 	}
+	
+	@GetMapping("paciente/{paciente_id}")
+    public List<Turno> getTurnoByPaciente(@PathVariable(value = "paciente_id") Integer id) {
+        return turnoRepositorio.findByPacienteId(id);
+    }
 }

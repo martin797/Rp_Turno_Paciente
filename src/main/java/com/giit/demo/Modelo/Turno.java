@@ -4,6 +4,8 @@ import java.sql.Date;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table (name="turno")
 public class Turno {
@@ -32,8 +34,8 @@ public class Turno {
 	private boolean confirmacion;
 
 	@ManyToOne
-	@JoinColumn(name = "turn_paciente")
-	Paciente pacient; 
+	@JoinColumn(name = "paciente_id")
+	Paciente paciente; 
 	
 	public int getId() {
 		return id;
@@ -89,6 +91,14 @@ public class Turno {
 
 	public void setConfirmacion(boolean confirmacion) {
 		this.confirmacion = confirmacion;
+	}
+
+	public Paciente getPaciente() {
+		return paciente;
+	}
+
+	public void setPaciente(Paciente paciente) {
+		this.paciente = paciente;
 	}
 	
 	
