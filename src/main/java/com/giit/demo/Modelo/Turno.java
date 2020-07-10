@@ -10,7 +10,7 @@ public class Turno {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name="paciente_id")
+	@Column(name="turno_id")
 	private int id;
 	
 	@Column(name="IdMedico")

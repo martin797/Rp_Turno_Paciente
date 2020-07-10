@@ -22,34 +22,34 @@ import com.giit.demo.Repositorio.TurnoRepositorio;
 @CrossOrigin (origins = "*", methods = {RequestMethod.GET,RequestMethod.POST, RequestMethod.DELETE, RequestMethod.PUT})
 public class TurnoControlador {
 	@Autowired
-	TurnoRepositorio clienteRepo;
+	TurnoRepositorio turnoRepositorio;
 	
 	@GetMapping
 	public Iterable<Turno> getAll(){
-		return clienteRepo.findAll();
+		return turnoRepositorio.findAll();
 	}
 	
 	@GetMapping ("/{id}")
 	public Turno getById(@PathVariable(value="id") Integer id) {
-		return clienteRepo.findById(id).orElseGet(() ->{
+		return turnoRepositorio.findById(id).orElseGet(() ->{
     		throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Turno no Encontrado");
     	});
 	}
 
 	@PostMapping
 	public Turno insertar(@RequestBody Turno turno) {
-		return clienteRepo.save(turno);
+		return turnoRepositorio.save(turno);
 	}
 	
 	@PutMapping
 	public Turno actualizar(@RequestBody Turno turno) {
-		return clienteRepo.save(turno);
+		return turnoRepositorio.save(turno);
 	}
 	
 	@DeleteMapping ("/{id}")
 	public void borrar(@PathVariable(value="id")Integer id) {
-		if(clienteRepo.findById(id).isPresent()) {
-			clienteRepo.delete(clienteRepo.findById(id).get());
+		if(turnoRepositorio.findById(id).isPresent()) {
+			turnoRepositorio.delete(turnoRepositorio.findById(id).get());
 		}
 	}
 }
