@@ -3,6 +3,7 @@ package com.giit.demo.Modelo;
 import javax.persistence.*;
 
 import java.sql.Date;
+import java.util.List;
 
 @Entity
 @Table (name="paciente")
@@ -30,6 +31,9 @@ public class Paciente {
 	
 	@Column(name="paciente_nacionalidad")
 	private String nacionalidad;
+	
+	@OneToMany(mappedBy = "pacient")
+	List<Turno> turnolist;
 	
 	public int getId() {
 		return id;
