@@ -70,4 +70,9 @@ public class TurnoControlador {
     public List<Turno> getTurnoByPaciente(@PathVariable(value = "paciente_id") Integer id) {
         return turnoRepositorio.findByPacienteId(id);
     }
+	
+	@GetMapping("cedula/{paciente_cedula}")
+    public List<Turno> getTurnoByPacienteCedula(@PathVariable(value = "paciente_cedula") String cedula) {
+        return turnoRepositorio.findByPacienteCedula(cedula);
+    }
 }
