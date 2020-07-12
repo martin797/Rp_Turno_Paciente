@@ -1,11 +1,10 @@
 package com.giit.demo.Controlador;
 
+import java.sql.Date;
 import java.util.List;
-import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -74,5 +73,10 @@ public class TurnoControlador {
 	@GetMapping("cedula/{paciente_cedula}")
     public List<Turno> getTurnoByPacienteCedula(@PathVariable(value = "paciente_cedula") String cedula) {
         return turnoRepositorio.findByPacienteCedula(cedula);
+    }
+	
+	@GetMapping("fecha/{paciente_cedula}/{fecha_turno}/{hora}")
+    public List<Turno> getTurnoByPacienteFecha(@PathVariable(value = "paciente_cedula") String cedula,@PathVariable(value = "fecha_turno") Date fecha,@PathVariable(value = "hora") String hora) {
+        return turnoRepositorio.findByPacienteFecha(cedula,fecha,hora);
     }
 }

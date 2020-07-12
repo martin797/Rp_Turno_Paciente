@@ -1,5 +1,6 @@
 package com.giit.demo.Modelo;
 
+
 import java.sql.Date;
 
 import javax.persistence.*;
