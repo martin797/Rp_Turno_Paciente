@@ -83,7 +83,7 @@ public class Turno {
 
 	public void setHora(String hora) {
 		this.hora = hora;
-	}
+	} 
 
 	public boolean isConfirmacion() {
 		return confirmacion;

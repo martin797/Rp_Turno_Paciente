@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.giit.demo.Modelo.Turno;
-import com.giit.demo.Repositorio.PacienteRepositorio;
+import com.giit.demo.Repositorio.pacienteRepositorio;
 import com.giit.demo.Repositorio.TurnoRepositorio;
 
 @RestController
@@ -29,7 +29,7 @@ public class TurnoControlador {
 	@Autowired
 	TurnoRepositorio turnoRepositorio;
 	@Autowired
-	PacienteRepositorio pacienteRepositorio;
+	pacienteRepositorio pacienteRepositorio;
 	
 	@GetMapping
 	public Iterable<Turno> getAll(){

@@ -1,5 +1,7 @@
 package com.giit.demo.Controlador;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -11,10 +13,11 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 import com.giit.demo.Modelo.Paciente;
-import com.giit.demo.Repositorio.PacienteRepositorio;
+import com.giit.demo.Repositorio.pacienteRepositorio;
 
 @RestController
 @RequestMapping("/api/paciente")
@@ -22,7 +25,7 @@ import com.giit.demo.Repositorio.PacienteRepositorio;
 public class PacienteControlador {  
 	
 	@Autowired
-	PacienteRepositorio pacienteRepo; 
+	pacienteRepositorio pacienteRepo; 
 	
 	@GetMapping
 	public Iterable<Paciente> getAll(){
@@ -52,4 +55,9 @@ public class PacienteControlador {
 			pacienteRepo.delete(pacienteRepo.findById(id).get());
 		}
 	}
+	
+	@RequestMapping(value = "cedula/{paciente_cedula}", method = RequestMethod.GET)
+    public @ResponseBody List<Paciente> getcedula (@PathVariable(value = "paciente_cedula") String cedula) {
+        return pacienteRepo.findByPacienteCedula(cedula);
+    }
 }
